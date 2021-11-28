@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DetailController;
+use App\Http\Controllers\HomeController;
+use App\Models\Detail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index']);
+
+Route::get('/book/{category_id}', [HomeController::class, 'viewCategory'])->name('view.categories');
+
+Route::get('/detail/{book_id}', [DetailController::class, 'viewDetail'])->name('view.detail');
+
+Route::get('/contact', [ContactController::class, 'viewContact']);
+
+

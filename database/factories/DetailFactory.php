@@ -18,7 +18,7 @@ class DetailFactory extends Factory
             "author" => $this->faker->name(),
             "publisher" => $this->faker->company(),
             "year" => $this->faker->year(),
-            "description" => $this->faker->realText(200, 2)
+            "description" => $this->faker->realText(500, 4)
         ];
     }
 }
