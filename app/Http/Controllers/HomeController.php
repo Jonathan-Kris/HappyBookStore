@@ -9,9 +9,6 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
-        $c = Category::all();
-        //dd($c);
-
         return view("index", [
             'categories' => Category::all(),
             'books' => Book::paginate(5)
@@ -19,8 +16,9 @@ class HomeController extends Controller
     }
 
     public function viewCategory($category_id){
-        return view("index", [
+        return view("category", [
             'categories' => Category::all(),
+            'categoryTitle' => Category::where('id', $category_id)->first(),
             'books' => Book::where('category_id', $category_id)->paginate(5)
         ]);
     }
